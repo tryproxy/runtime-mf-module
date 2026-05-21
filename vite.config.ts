@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import viteTsconfigPaths from 'vite-tsconfig-paths';
 import svgr from 'vite-plugin-svgr';
+import federation from '@originjs/vite-plugin-federation';
 
 export default defineConfig({
   plugins: [
@@ -16,5 +17,26 @@ export default defineConfig({
     svgr({
       include: '**/*.svg?react',
     }),
+    federation({
+      name: 'runtime_mf_module',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './mount': './src/mount.tsx',
+      },
+      shared: ['react', 'react-dom'],
+    }),
   ],
+  server: {
+    port: 5001,
+    strictPort: true,
+    cors: true,
+  },
+  preview: {
+    port: 5001,
+    strictPort: true,
+    cors: true,
+  },
+  build: {
+    target: 'esnext',
+  },
 });
