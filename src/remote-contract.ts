@@ -3,6 +3,7 @@ export type ThemeMode = 'light' | 'dark';
 export type HostBridge = {
   theme: {
     getSnapshot(): { mode: ThemeMode };
+    subscribe(listener: () => void): () => void;
   };
 
   auth: {
