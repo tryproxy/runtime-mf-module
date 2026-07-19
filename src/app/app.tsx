@@ -2,7 +2,7 @@ import { AboutPage } from '@/pages/about';
 import { CrashPage } from '@/pages/crash';
 import { DetailsPage } from '@/pages/details';
 import { HomePage } from '@/pages/home';
-import { ModuleNav } from '@/shared/ui/module-nav';
+import { ModuleNav } from '@/app/ui/module-nav';
 import {
   BrowserRouter,
   HashRouter,
@@ -25,7 +25,7 @@ function AppRoutes({
 }) {
   return (
     <section className="space-y-6">
-      <ModuleNav />
+      <ModuleNav showLocaleSwitch={!isEmbedded} />
 
       <Routes>
         <Route

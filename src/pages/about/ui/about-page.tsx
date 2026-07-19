@@ -1,4 +1,5 @@
 import { Panel } from '@/shared/ui/panel';
+import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 
 type AboutPageProps = {
@@ -6,39 +7,39 @@ type AboutPageProps = {
 };
 
 export function AboutPage({ basename }: AboutPageProps) {
+  const { t } = useTranslation();
   const location = useLocation();
   const activePath = `${location.pathname}${location.search}${location.hash}`;
 
   return (
     <section className="space-y-6">
       <div>
-        <h3 className="text-rmf-fg text-lg font-semibold">About</h3>
-        <p className="text-rmf-muted mt-1 text-sm">
-          Another module-owned React Router route. Same mount session as
-          Overview and Details — only the module view should change.
-        </p>
+        <h3 className="text-rmf-fg text-lg font-semibold">
+          {t('about.title')}
+        </h3>
+        <p className="text-rmf-muted mt-1 text-sm">{t('about.description')}</p>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
         <Panel
-          title="Route"
+          title={t('about.route')}
           value="/about"
-          description="Third path for the history experiment."
+          description={t('about.routeDesc')}
         />
         <Panel
-          title="Active path"
+          title={t('about.activePath')}
           value={activePath}
-          description="Current path from React Router (relative to basename)."
+          description={t('about.activePathDesc')}
         />
         <Panel
-          title="Basename"
+          title={t('about.basename')}
           value={basename || '(none)'}
-          description="Namespace the shell passed into mount()."
+          description={t('about.basenameDesc')}
         />
         <Panel
-          title="Ownership"
-          value="React Router"
-          description="Shell owns /remote/* namespace; module owns routes under basename."
+          title={t('about.ownership')}
+          value={t('about.ownershipValue')}
+          description={t('about.ownershipDesc')}
         />
       </div>
     </section>

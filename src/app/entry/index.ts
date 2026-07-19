@@ -1,0 +1,12 @@
+/**
+ * Federation mount seam (app-level platform entry).
+ * Vite exposes `./mount` → this slice.
+ */
+export { mount } from './mount';
+export type {
+  AppLocale,
+  HostBridge,
+  MountRemoteApp,
+  RemoteAppInstance,
+  ThemeMode,
+} from './remote-contract';

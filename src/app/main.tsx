@@ -1,6 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { RemoteErrorBoundary } from '@/entry/ui/remote-error-boundary';
+import { RemoteErrorBoundary } from '@/app/ui/remote-error-boundary';
+import '@/shared/i18n';
 import './index.css';
 import App from './app';
 

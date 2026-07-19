@@ -21,7 +21,7 @@ export default defineConfig({
       name: 'runtime_mf_module',
       filename: 'remoteEntry.js',
       exposes: {
-        './mount': './src/entry/mount.tsx',
+        './mount': './src/app/entry/mount.tsx',
       },
       shared: ['react', 'react-dom'],
     }),

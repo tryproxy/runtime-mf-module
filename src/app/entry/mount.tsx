@@ -1,7 +1,8 @@
 import { createRoot, type Root } from 'react-dom/client';
+import { RemoteErrorBoundary } from '@/app/ui/remote-error-boundary';
+import '@/shared/i18n';
 import type { MountRemoteApp } from './remote-contract';
-import { RemoteErrorBoundary } from './ui/remote-error-boundary';
-import { RemoteApp } from './ui/remote-app';
+import { RemoteApp } from './remote-app';
 
 export const mount: MountRemoteApp = ({ container, bridge, basename }) => {
   const root: Root = createRoot(container);
@@ -18,3 +19,11 @@ export const mount: MountRemoteApp = ({ container, bridge, basename }) => {
     },
   };
 };
+
+export type {
+  AppLocale,
+  HostBridge,
+  MountRemoteApp,
+  RemoteAppInstance,
+  ThemeMode,
+} from './remote-contract';

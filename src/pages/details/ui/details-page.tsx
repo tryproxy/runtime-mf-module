@@ -1,4 +1,5 @@
 import { Panel } from '@/shared/ui/panel';
+import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 
 type DetailsPageProps = {
@@ -6,39 +7,41 @@ type DetailsPageProps = {
 };
 
 export function DetailsPage({ basename }: DetailsPageProps) {
+  const { t } = useTranslation();
   const location = useLocation();
   const activePath = `${location.pathname}${location.search}${location.hash}`;
 
   return (
     <section className="space-y-6">
       <div>
-        <h3 className="text-rmf-fg text-lg font-semibold">Details</h3>
+        <h3 className="text-rmf-fg text-lg font-semibold">
+          {t('details.title')}
+        </h3>
         <p className="text-rmf-muted mt-1 text-sm">
-          Module-owned React Router route under the shell basename. Use browser
-          back / forward after Overview → Details → About.
+          {t('details.description')}
         </p>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
         <Panel
-          title="Route"
+          title={t('details.route')}
           value="/details"
-          description="Interpreted by the module React Router, not the shell."
+          description={t('details.routeDesc')}
         />
         <Panel
-          title="Active path"
+          title={t('details.activePath')}
           value={activePath}
-          description="Current path from React Router (relative to basename)."
+          description={t('details.activePathDesc')}
         />
         <Panel
-          title="Basename"
+          title={t('details.basename')}
           value={basename || '(none)'}
-          description="Namespace the shell passed into mount()."
+          description={t('details.basenameDesc')}
         />
         <Panel
-          title="History check"
-          value="back / forward"
-          description="Shell must keep RemoteSlot mounted for /remote/*."
+          title={t('details.history')}
+          value={t('details.historyValue')}
+          description={t('details.historyDesc')}
         />
       </div>
     </section>

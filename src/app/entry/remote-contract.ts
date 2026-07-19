@@ -1,8 +1,14 @@
 export type ThemeMode = 'light' | 'dark';
+export type AppLocale = 'en' | 'ru';
 
 export type HostBridge = {
   theme: {
     getSnapshot(): { mode: ThemeMode };
+    subscribe(listener: () => void): () => void;
+  };
+
+  i18n: {
+    getLocale(): AppLocale;
     subscribe(listener: () => void): () => void;
   };
 
