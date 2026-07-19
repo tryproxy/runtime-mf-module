@@ -10,11 +10,11 @@ export function HomePage({ isEmbedded, activePath, basename }: HomePageProps) {
   return (
     <section className="space-y-6">
       <div>
-        <h3 className="text-lg font-semibold">Remote module</h3>
-        <p className="mt-1 text-sm text-slate-600">
+        <h3 className="text-rmf-fg text-lg font-semibold">Remote module</h3>
+        <p className="text-rmf-muted mt-1 text-sm">
           Module-owned technical surface. Mounted by the shell over federation —
           no product UI. Only enough to prove the mount contract and host
-          bridge.
+          bridge. Panel colors come from shell CSS tokens (--rmf-*).
         </p>
       </div>
 
@@ -55,16 +55,16 @@ export function HomePage({ isEmbedded, activePath, basename }: HomePageProps) {
         />
       </div>
 
-      <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
-        <p className="text-sm font-medium text-slate-500">Contract notes</p>
-        <ul className="mt-3 list-inside list-disc space-y-2 text-sm text-slate-600">
-          <li>Shell owns layout, theme toggle, and sidebar.</li>
+      <div className="rounded-rmf-md border-rmf-border bg-rmf-surface shadow-rmf-sm border p-5">
+        <p className="text-rmf-subtle text-sm font-medium">Contract notes</p>
+        <ul className="text-rmf-muted mt-3 list-inside list-disc space-y-2 text-sm">
+          <li>Shell owns layout, theme toggle, sidebar, and CSS tokens.</li>
           <li>
             Module is loaded via federation and mounted into a host container.
           </li>
           <li>
-            Host bridge supplies theme / navigation / auth — module does not
-            import shell internals.
+            Host bridge supplies theme / navigation / auth — paint tokens arrive
+            as CSS variables on html[data-rmf-theme].
           </li>
         </ul>
       </div>

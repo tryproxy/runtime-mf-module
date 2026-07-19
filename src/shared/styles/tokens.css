@@ -1,0 +1,27 @@
+/**
+ * Runtime MF design-token contract (sketch) — consumer side.
+ * When embedded, shell sets html[data-rmf-theme] and owns the values.
+ * Fallbacks below cover standalone preview without the shell.
+ */
+
+:root {
+  --rmf-color-page: #f1f5f9;
+  --rmf-color-surface: #ffffff;
+  --rmf-color-fg: #0f172a;
+  --rmf-color-muted: #475569;
+  --rmf-color-subtle: #64748b;
+  --rmf-color-border: #e2e8f0;
+  --rmf-radius-md: 0.5rem;
+  --rmf-shadow-sm: 0 1px 2px rgb(15 23 42 / 0.06);
+}
+
+@theme {
+  --color-rmf-page: var(--rmf-color-page);
+  --color-rmf-surface: var(--rmf-color-surface);
+  --color-rmf-fg: var(--rmf-color-fg);
+  --color-rmf-muted: var(--rmf-color-muted);
+  --color-rmf-subtle: var(--rmf-color-subtle);
+  --color-rmf-border: var(--rmf-color-border);
+  --radius-rmf-md: var(--rmf-radius-md);
+  --shadow-rmf-sm: var(--rmf-shadow-sm);
+}
