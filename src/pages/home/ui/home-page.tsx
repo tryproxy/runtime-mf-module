@@ -24,7 +24,7 @@ export function HomePage({ isEmbedded, basename }: HomePageProps) {
         </p>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="wideMobile:grid-cols-2 grid gap-4">
         <Panel
           title={t('home.owner')}
           value={t('home.ownerValue')}

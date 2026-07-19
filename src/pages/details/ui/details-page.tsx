@@ -22,7 +22,7 @@ export function DetailsPage({ basename }: DetailsPageProps) {
         </p>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="wideMobile:grid-cols-2 grid gap-4">
         <Panel
           title={t('details.route')}
           value="/details"

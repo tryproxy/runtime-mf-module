@@ -19,6 +19,7 @@ const links = [
   { to: '/', labelKey: 'nav.overview', end: true },
   { to: '/details', labelKey: 'nav.details', end: false },
   { to: '/about', labelKey: 'nav.about', end: false },
+  { to: '/form', labelKey: 'nav.form', end: false },
   { to: '/crash', labelKey: 'nav.crash', end: false },
 ] as const;
 
@@ -32,8 +33,8 @@ export function ModuleNav({ showLocaleSwitch = false }: ModuleNavProps) {
   const locale: AppLocale = isAppLocale(i18n.language) ? i18n.language : 'en';
 
   return (
-    <div className="flex flex-wrap items-center justify-between gap-3">
-      <nav className="flex flex-wrap gap-2" aria-label="Module routes">
+    <div className="flex min-w-0 flex-wrap items-center justify-between gap-3">
+      <nav className="flex min-w-0 flex-wrap gap-2" aria-label="Module routes">
         {links.map((link) => (
           <NavLink
             key={link.to}

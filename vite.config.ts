@@ -4,6 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 import viteTsconfigPaths from 'vite-tsconfig-paths';
 import svgr from 'vite-plugin-svgr';
 import federation from '@originjs/vite-plugin-federation';
+import { rmfRemoteCssLayer } from './vite-plugin-rmf-remote-css-layer';
 
 export default defineConfig({
   plugins: [
@@ -25,6 +26,7 @@ export default defineConfig({
       },
       shared: ['react', 'react-dom'],
     }),
+    rmfRemoteCssLayer(),
   ],
   server: {
     port: 5001,

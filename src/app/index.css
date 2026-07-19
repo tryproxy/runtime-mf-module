@@ -1,3 +1,8 @@
+/*
+ * Federated CSS is demoted into `@layer rmf-remote` at build time
+ * (see vite-plugin-rmf-remote-css-layer.ts) so shell utilities win on
+ * collisions. Utilities stay unprefixed/global — required for body portals.
+ */
 @import 'tailwindcss';
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
@@ -100,8 +105,9 @@
   --accent: oklch(0.269 0 0);
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
+  /* Control chrome on --card; keep solid (opacity utilities dilute alpha tokens). */
+  --border: oklch(1 0 0 / 22%);
+  --input: oklch(0.45 0 0);
   --ring: oklch(0.556 0 0);
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);

@@ -14,10 +14,10 @@ type PanelProps = {
 
 export function Panel({ title, value, description }: PanelProps) {
   return (
-    <Card size="sm">
+    <Card size="sm" className="min-w-0">
       <CardHeader>
         <CardDescription>{title}</CardDescription>
-        <CardTitle className="text-2xl">{value}</CardTitle>
+        <CardTitle className="text-2xl break-words">{value}</CardTitle>
       </CardHeader>
       <CardContent>
         <p className="text-muted-foreground text-sm">{description}</p>
