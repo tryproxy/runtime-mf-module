@@ -1,6 +1,21 @@
 export type ThemeMode = 'light' | 'dark';
 export type AppLocale = 'en' | 'ru';
 
+export type TelemetryProps = Record<
+  string,
+  string | number | boolean | null | undefined
+>;
+
+export type HostTelemetry = {
+  track(event: string, props?: TelemetryProps): void;
+  captureException(error: unknown, props?: TelemetryProps): void;
+  captureMessage(
+    message: string,
+    level?: 'info' | 'warning' | 'error',
+    props?: TelemetryProps
+  ): void;
+};
+
 export type HostBridge = {
   theme: {
     getSnapshot(): { mode: ThemeMode };
@@ -29,6 +44,9 @@ export type HostBridge = {
     navigate(path: string): void;
     replace(path: string): void;
   };
+
+  /** Platform analytics / errors. PoC: present on the bridge; host may no-op. */
+  telemetry: HostTelemetry;
 };
 
 export type RemoteAppInstance = {

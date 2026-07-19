@@ -23,7 +23,9 @@ export const mount: MountRemoteApp = ({ container, bridge, basename }) => {
 export type {
   AppLocale,
   HostBridge,
+  HostTelemetry,
   MountRemoteApp,
   RemoteAppInstance,
+  TelemetryProps,
   ThemeMode,
 } from './remote-contract';
