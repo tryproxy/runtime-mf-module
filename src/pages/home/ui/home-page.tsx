@@ -1,20 +1,25 @@
 import { Panel } from '@/shared/ui/panel';
+import { useLocation } from 'react-router-dom';
 
 type HomePageProps = {
   isEmbedded: boolean;
-  activePath: string;
   basename: string;
 };
 
-export function HomePage({ isEmbedded, activePath, basename }: HomePageProps) {
+export function HomePage({ isEmbedded, basename }: HomePageProps) {
+  const location = useLocation();
+  const activePath = `${location.pathname}${location.search}${location.hash}`;
+
   return (
     <section className="space-y-6">
       <div>
         <h3 className="text-rmf-fg text-lg font-semibold">Remote module</h3>
         <p className="text-rmf-muted mt-1 text-sm">
-          Module-owned technical surface. Mounted by the shell over federation —
-          no product UI. Only enough to prove the mount contract and host
-          bridge. Panel colors come from shell CSS tokens (--rmf-*).
+          Module-owned technical surface. Shell owns the{' '}
+          <code className="text-rmf-fg">/remote/*</code> namespace; this module
+          uses React Router under that basename. Use Overview / Details / About,
+          then browser back / forward. Panel colors come from shell CSS tokens
+          (--rmf-*).
         </p>
       </div>
 
@@ -36,7 +41,7 @@ export function HomePage({ isEmbedded, activePath, basename }: HomePageProps) {
         <Panel
           title="Active path"
           value={activePath}
-          description="Current URL owned under the remote basename."
+          description="Current path from React Router (relative to basename)."
         />
         <Panel
           title="Basename"
@@ -65,6 +70,10 @@ export function HomePage({ isEmbedded, activePath, basename }: HomePageProps) {
           <li>
             Host bridge supplies theme / navigation / auth — paint tokens arrive
             as CSS variables on html[data-rmf-theme].
+          </li>
+          <li>
+            Module routing uses React Router today; wiring through
+            bridge.navigation comes next.
           </li>
         </ul>
       </div>

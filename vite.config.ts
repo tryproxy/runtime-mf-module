@@ -23,10 +23,7 @@ export default defineConfig({
       exposes: {
         './mount': './src/entry/mount.tsx',
       },
-      shared: {
-        react: { requiredVersion: '^19.1.1' },
-        'react-dom': { requiredVersion: '^19.1.1' },
-      },
+      shared: ['react', 'react-dom'],
     }),
   ],
   server: {
