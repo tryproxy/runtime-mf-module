@@ -1,4 +1,5 @@
 import { AboutPage } from '@/pages/about';
+import { CrashPage } from '@/pages/crash';
 import { DetailsPage } from '@/pages/details';
 import { HomePage } from '@/pages/home';
 import { ModuleNav } from '@/shared/ui/module-nav';
@@ -33,6 +34,7 @@ function AppRoutes({
         />
         <Route path="/details" element={<DetailsPage basename={basename} />} />
         <Route path="/about" element={<AboutPage basename={basename} />} />
+        <Route path="/crash" element={<CrashPage />} />
         <Route path="*" element={<Navigate replace to="/" />} />
       </Routes>
     </section>

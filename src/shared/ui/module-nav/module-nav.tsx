@@ -5,6 +5,7 @@ const links = [
   { to: '/', label: 'Overview', end: true },
   { to: '/details', label: 'Details', end: false },
   { to: '/about', label: 'About', end: false },
+  { to: '/crash', label: 'Crash test', end: false },
 ] as const;
 
 export function ModuleNav() {
