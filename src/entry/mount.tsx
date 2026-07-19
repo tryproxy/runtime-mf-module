@@ -1,6 +1,6 @@
 import { createRoot, type Root } from 'react-dom/client';
-import { RemoteApp } from './app/remote-app';
 import type { MountRemoteApp } from './remote-contract';
+import { RemoteApp } from './ui/remote-app';
 
 export const mount: MountRemoteApp = ({ container, bridge, basename }) => {
   const root: Root = createRoot(container);
