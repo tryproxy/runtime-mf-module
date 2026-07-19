@@ -28,7 +28,7 @@ function AppRoutes({
   return (
     <TooltipProvider>
       <section className="min-w-0 space-y-6 overflow-x-auto">
-        <ModuleNav showLocaleSwitch={!isEmbedded} />
+        {!isEmbedded ? <ModuleNav showLocaleSwitch /> : null}
 
         <Routes>
           <Route
