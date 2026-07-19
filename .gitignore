@@ -30,3 +30,6 @@ dist-ssr
 
 bundle.*
 .vite
+
+# Accidental path from shadcn CLI when @/ is not resolved as src/
+/@

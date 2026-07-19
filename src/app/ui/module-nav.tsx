@@ -5,6 +5,13 @@ import {
   persistLocale,
 } from '@/shared/i18n';
 import { cn } from '@/shared/lib';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/shared/ui/shadcn';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
@@ -34,10 +41,10 @@ export function ModuleNav({ showLocaleSwitch = false }: ModuleNavProps) {
             end={link.end}
             className={({ isActive }) =>
               cn(
-                'rounded-rmf-md border px-3 py-1.5 text-sm transition-colors',
+                'rounded-lg px-3 py-2 text-sm font-medium transition-colors',
                 isActive
-                  ? 'border-rmf-border bg-rmf-surface text-rmf-fg shadow-rmf-sm'
-                  : 'text-rmf-muted hover:text-rmf-fg border-transparent'
+                  ? 'bg-secondary text-secondary-foreground'
+                  : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
               )
             }
           >
@@ -47,24 +54,30 @@ export function ModuleNav({ showLocaleSwitch = false }: ModuleNavProps) {
       </nav>
 
       {showLocaleSwitch ? (
-        <label className="text-rmf-muted flex items-center gap-2 text-sm">
-          <span>{t('nav.language')}</span>
-          <select
-            className="border-rmf-border bg-rmf-surface text-rmf-fg rounded-rmf-md border px-2 py-1"
+        <div className="flex items-center gap-2">
+          <span className="text-muted-foreground text-sm">
+            {t('nav.language')}
+          </span>
+          <Select
             value={locale}
-            onChange={(event) => {
-              const next = event.target.value as AppLocale;
+            onValueChange={(value) => {
+              const next = value as AppLocale;
               persistLocale(next);
               void i18n.changeLanguage(next);
             }}
           >
-            {APP_LOCALES.map((code) => (
-              <option key={code} value={code}>
-                {code.toUpperCase()}
-              </option>
-            ))}
-          </select>
-        </label>
+            <SelectTrigger size="sm" aria-label={t('nav.language')}>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              {APP_LOCALES.map((code) => (
+                <SelectItem key={code} value={code}>
+                  {code.toUpperCase()}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
       ) : null}
     </div>
   );

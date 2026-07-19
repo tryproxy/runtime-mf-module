@@ -14,10 +14,10 @@ export function DetailsPage({ basename }: DetailsPageProps) {
   return (
     <section className="space-y-6">
       <div>
-        <h3 className="text-rmf-fg text-lg font-semibold">
+        <h3 className="text-lg font-semibold tracking-tight">
           {t('details.title')}
         </h3>
-        <p className="text-rmf-muted mt-1 text-sm">
+        <p className="text-muted-foreground mt-1 text-sm">
           {t('details.description')}
         </p>
       </div>

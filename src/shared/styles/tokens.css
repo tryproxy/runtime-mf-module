@@ -1,18 +1,33 @@
 /**
- * Runtime MF design-token contract (sketch) — consumer side.
- * When embedded, shell sets html[data-rmf-theme] and owns the values.
- * Fallbacks below cover standalone preview without the shell.
+ * Runtime MF design-token contract — consumer side.
+ * Shell owns paint when embedded; values bridge from shadcn semantic tokens
+ * so standalone preview and embedded remotes stay aligned.
+ *
+ * Theme switches: html[data-rmf-theme] + class "dark" (shadcn).
  */
 
-:root {
-  --rmf-color-page: #f1f5f9;
-  --rmf-color-surface: #ffffff;
-  --rmf-color-fg: #0f172a;
-  --rmf-color-muted: #475569;
-  --rmf-color-subtle: #64748b;
-  --rmf-color-border: #e2e8f0;
-  --rmf-radius-md: 0.5rem;
+html[data-rmf-theme='light'],
+html:not(.dark) {
+  --rmf-color-page: var(--background);
+  --rmf-color-surface: var(--card);
+  --rmf-color-fg: var(--foreground);
+  --rmf-color-muted: var(--muted-foreground);
+  --rmf-color-subtle: var(--muted-foreground);
+  --rmf-color-border: var(--border);
+  --rmf-radius-md: var(--radius);
   --rmf-shadow-sm: 0 1px 2px rgb(15 23 42 / 0.06);
+}
+
+html[data-rmf-theme='dark'],
+html.dark {
+  --rmf-color-page: var(--background);
+  --rmf-color-surface: var(--card);
+  --rmf-color-fg: var(--foreground);
+  --rmf-color-muted: var(--muted-foreground);
+  --rmf-color-subtle: var(--muted-foreground);
+  --rmf-color-border: var(--border);
+  --rmf-radius-md: var(--radius);
+  --rmf-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.35);
 }
 
 @theme {

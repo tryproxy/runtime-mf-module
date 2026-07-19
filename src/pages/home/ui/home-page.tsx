@@ -1,4 +1,5 @@
 import { Panel } from '@/shared/ui/panel';
+import { Card, CardContent, CardHeader, CardTitle } from '@/shared/ui/shadcn';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 
@@ -15,8 +16,12 @@ export function HomePage({ isEmbedded, basename }: HomePageProps) {
   return (
     <section className="space-y-6">
       <div>
-        <h3 className="text-rmf-fg text-lg font-semibold">{t('home.title')}</h3>
-        <p className="text-rmf-muted mt-1 text-sm">{t('home.description')}</p>
+        <h3 className="text-lg font-semibold tracking-tight">
+          {t('home.title')}
+        </h3>
+        <p className="text-muted-foreground mt-1 text-sm">
+          {t('home.description')}
+        </p>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
@@ -56,17 +61,19 @@ export function HomePage({ isEmbedded, basename }: HomePageProps) {
         />
       </div>
 
-      <div className="rounded-rmf-md border-rmf-border bg-rmf-surface shadow-rmf-sm border p-5">
-        <p className="text-rmf-subtle text-sm font-medium">
-          {t('home.notesTitle')}
-        </p>
-        <ul className="text-rmf-muted mt-3 list-inside list-disc space-y-2 text-sm">
-          <li>{t('home.noteLayout')}</li>
-          <li>{t('home.noteMount')}</li>
-          <li>{t('home.noteBridge')}</li>
-          <li>{t('home.noteI18n')}</li>
-        </ul>
-      </div>
+      <Card>
+        <CardHeader>
+          <CardTitle>{t('home.notesTitle')}</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ul className="text-muted-foreground list-inside list-disc space-y-2 text-sm">
+            <li>{t('home.noteLayout')}</li>
+            <li>{t('home.noteMount')}</li>
+            <li>{t('home.noteBridge')}</li>
+            <li>{t('home.noteI18n')}</li>
+          </ul>
+        </CardContent>
+      </Card>
     </section>
   );
 }

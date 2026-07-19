@@ -14,10 +14,12 @@ export function AboutPage({ basename }: AboutPageProps) {
   return (
     <section className="space-y-6">
       <div>
-        <h3 className="text-rmf-fg text-lg font-semibold">
+        <h3 className="text-lg font-semibold tracking-tight">
           {t('about.title')}
         </h3>
-        <p className="text-rmf-muted mt-1 text-sm">{t('about.description')}</p>
+        <p className="text-muted-foreground mt-1 text-sm">
+          {t('about.description')}
+        </p>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
