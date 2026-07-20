@@ -2,7 +2,7 @@ import { createRoot, type Root } from 'react-dom/client';
 import { RemoteErrorBoundary } from '@/app/ui/remote-error-boundary';
 import '@/shared/i18n';
 import '@/app/index.css';
-import type { MountRemoteApp } from './remote-contract';
+import type { MountRemoteApp } from '@platform/runtime-mf-contract';
 import { RemoteApp } from './remote-app';
 
 export const mount: MountRemoteApp = ({ container, bridge, basename }) => {
@@ -21,6 +21,7 @@ export const mount: MountRemoteApp = ({ container, bridge, basename }) => {
   };
 };
 
+/** Re-export contract types from the federation entry (shell may import them). */
 export type {
   AppLocale,
   HostBridge,
@@ -29,4 +30,4 @@ export type {
   RemoteAppInstance,
   TelemetryProps,
   ThemeMode,
-} from './remote-contract';
+} from '@platform/runtime-mf-contract';
