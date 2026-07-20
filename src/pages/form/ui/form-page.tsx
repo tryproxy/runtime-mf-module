@@ -55,7 +55,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/shared/ui/shadcn/popover';
-import { RadioGroup, RadioGroupItem } from '@/shared/ui/shadcn/radio-group';
 import {
   Select,
   SelectContent,
@@ -71,7 +70,6 @@ import {
   SheetTitle,
 } from '@/shared/ui/shadcn/sheet';
 import { Switch } from '@/shared/ui/shadcn/switch';
-import { Textarea } from '@/shared/ui/shadcn/textarea';
 import {
   Tooltip,
   TooltipContent,
@@ -79,7 +77,6 @@ import {
 } from '@/shared/ui/shadcn/tooltip';
 
 const TEAMS = ['platform', 'design', 'growth'] as const;
-const PRIORITIES = ['low', 'medium', 'high'] as const;
 const FRAMEWORKS = [
   { value: 'react', labelKey: 'form.frameworkReact' },
   { value: 'vue', labelKey: 'form.frameworkVue' },
@@ -90,16 +87,9 @@ const FRAMEWORKS = [
 function buildSchema(t: (key: string) => string) {
   return z.object({
     title: z.string().min(3, { message: t('form.validationTitle') }),
-    description: z
-      .string()
-      .min(8, { message: t('form.validationDescription') }),
     team: z.enum(TEAMS, {
       required_error: t('form.validationTeam'),
       invalid_type_error: t('form.validationTeam'),
-    }),
-    priority: z.enum(PRIORITIES, {
-      required_error: t('form.validationPriority'),
-      invalid_type_error: t('form.validationPriority'),
     }),
     framework: z.string().min(1, { message: t('form.validationFramework') }),
     dueDate: z.date({
@@ -131,9 +121,7 @@ export function FormPage({ basename }: FormPageProps) {
     resolver: zodResolver(schema),
     defaultValues: {
       title: '',
-      description: '',
       team: undefined,
-      priority: 'medium',
       framework: '',
       dueDate: undefined,
       notify: true,
@@ -179,9 +167,6 @@ export function FormPage({ basename }: FormPageProps) {
           <h3 className="text-lg font-semibold tracking-tight">
             {t('form.title')}
           </h3>
-          <p className="text-muted-foreground mt-1 max-w-2xl text-sm">
-            {t('form.description')}
-          </p>
           <p className="text-muted-foreground mt-2 font-mono text-xs">
             {basename || '(none)'}
             /form
@@ -261,24 +246,6 @@ export function FormPage({ basename }: FormPageProps) {
 
             <FormField
               control={form.control}
-              name="description"
-              render={({ field }) => (
-                <FormItem className="wideMobile:col-span-2">
-                  <FormLabel>{t('form.fieldDescription')}</FormLabel>
-                  <FormControl>
-                    <Textarea
-                      placeholder={t('form.fieldDescriptionPlaceholder')}
-                      className="min-h-24 w-full"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
               name="team"
               render={({ field }) => (
                 <FormItem>
@@ -299,38 +266,6 @@ export function FormPage({ basename }: FormPageProps) {
                       ))}
                     </SelectContent>
                   </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="priority"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{t('form.fieldPriority')}</FormLabel>
-                  <FormControl>
-                    <RadioGroup
-                      onValueChange={field.onChange}
-                      value={field.value}
-                      className="flex flex-wrap gap-3"
-                    >
-                      {PRIORITIES.map((priority) => (
-                        <FormItem
-                          key={priority}
-                          className="flex items-center gap-2 space-y-0"
-                        >
-                          <FormControl>
-                            <RadioGroupItem value={priority} />
-                          </FormControl>
-                          <FormLabel className="font-normal">
-                            {t(`form.priority.${priority}`)}
-                          </FormLabel>
-                        </FormItem>
-                      ))}
-                    </RadioGroup>
-                  </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
@@ -453,12 +388,7 @@ export function FormPage({ basename }: FormPageProps) {
               name="notify"
               render={({ field }) => (
                 <FormItem className="wideMobile:col-span-2 flex flex-row items-center justify-between gap-4 rounded-lg border p-4">
-                  <div className="space-y-1">
-                    <FormLabel>{t('form.fieldNotify')}</FormLabel>
-                    <FormDescription>
-                      {t('form.fieldNotifyHint')}
-                    </FormDescription>
-                  </div>
+                  <FormLabel>{t('form.fieldNotify')}</FormLabel>
                   <FormControl>
                     <Switch
                       checked={field.value}
@@ -561,18 +491,8 @@ export function FormPage({ basename }: FormPageProps) {
           <div className="space-y-3 px-4 pb-4 text-sm">
             <PreviewRow label={t('form.fieldTitle')} value={watched.title} />
             <PreviewRow
-              label={t('form.fieldDescription')}
-              value={watched.description}
-            />
-            <PreviewRow
               label={t('form.fieldTeam')}
               value={watched.team ? t(`form.team.${watched.team}`) : '—'}
-            />
-            <PreviewRow
-              label={t('form.fieldPriority')}
-              value={
-                watched.priority ? t(`form.priority.${watched.priority}`) : '—'
-              }
             />
             <PreviewRow
               label={t('form.fieldFramework')}

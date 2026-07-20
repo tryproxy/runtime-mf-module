@@ -67,7 +67,7 @@ function App({ basename = '', isEmbedded = false }: AppProps) {
     );
   }
 
-  const mockBridge = createMockHostBridge({ theme: 'light', locale: 'en' });
+  const mockBridge = createMockHostBridge({ theme: 'dark', locale: 'en' });
 
   return (
     <HostBridgeProvider value={mockBridge}>
