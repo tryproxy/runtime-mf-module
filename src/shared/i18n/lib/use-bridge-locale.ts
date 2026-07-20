@@ -4,7 +4,7 @@ import { isAppLocale } from '../model/locale';
 
 type LocaleHostBridge = {
   i18n: {
-    getLocale(): string;
+    getSnapshot(): { locale: string };
     subscribe(listener: () => void): () => void;
   };
 };
@@ -19,7 +19,7 @@ export function useBridgeLocale(bridge: LocaleHostBridge | null): void {
     }
 
     const apply = () => {
-      const locale = bridge.i18n.getLocale();
+      const { locale } = bridge.i18n.getSnapshot();
       if (isAppLocale(locale) && i18n.language !== locale) {
         void i18n.changeLanguage(locale);
       }
