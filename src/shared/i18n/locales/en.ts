@@ -36,6 +36,15 @@ export const en = {
     noteBridge:
       'Host bridge supplies theme / locale / navigation / auth — paint tokens arrive as CSS variables on html[data-rmf-theme].',
     noteI18n: 'Locale follows the shell via bridge.i18n when embedded.',
+    meTitle: 'Protected API: GET /v1/account/me',
+    meHint:
+      'Uses AccessTokenGuard. Reads rmf-access-token from localStorage and sends Authorization: Bearer.',
+    meRequest: 'Request /v1/account/me',
+    meReload: 'Reload',
+    meLoading: 'Loading…',
+    meEmpty: 'No data yet.',
+    meNoToken: 'No access token in localStorage (sign in via shell /login).',
+    meFailed: 'Failed to load /v1/account/me',
   },
   details: {
     title: 'Details',

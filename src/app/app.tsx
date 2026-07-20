@@ -4,6 +4,7 @@ import { DetailsPage } from '@/pages/details';
 import { FormPage } from '@/pages/form';
 import { HomePage } from '@/pages/home';
 import { ModuleNav } from '@/app/ui/module-nav';
+import { ProtectedMeButton } from '@/app/ui/protected-me-button';
 import { Toaster, TooltipProvider } from '@/shared/ui/shadcn';
 import {
   BrowserRouter,
@@ -29,6 +30,8 @@ function AppRoutes({
     <TooltipProvider>
       <section className="min-w-0 space-y-6 overflow-x-auto">
         {!isEmbedded ? <ModuleNav showLocaleSwitch /> : null}
+
+        <ProtectedMeButton />
 
         <Routes>
           <Route

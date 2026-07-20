@@ -36,6 +36,16 @@ export const ru = {
     noteBridge:
       'Host bridge даёт theme / locale / navigation / auth — токены краски приходят как CSS-переменные на html[data-rmf-theme].',
     noteI18n: 'Локаль следует за shell через bridge.i18n во встроенном режиме.',
+    meTitle: 'Защищённый API: GET /v1/account/me',
+    meHint:
+      'AccessTokenGuard. Берёт rmf-access-token из localStorage и шлёт Authorization: Bearer.',
+    meRequest: 'Запросить /v1/account/me',
+    meReload: 'Обновить',
+    meLoading: 'Загрузка…',
+    meEmpty: 'Пока нет данных.',
+    meNoToken:
+      'Нет access token в localStorage (войдите через shell /login).',
+    meFailed: 'Не удалось загрузить /v1/account/me',
   },
   details: {
     title: 'Детали',
