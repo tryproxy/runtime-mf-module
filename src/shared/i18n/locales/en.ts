@@ -38,12 +38,14 @@ export const en = {
     noteI18n: 'Locale follows the shell via bridge.i18n when embedded.',
     meTitle: 'Protected API: GET /v1/account/me',
     meHint:
-      'Uses AccessTokenGuard. Reads rmf-access-token from localStorage and sends Authorization: Bearer.',
+      'Uses AccessTokenGuard. Token comes from bridge.auth.http.getAccessToken() (not localStorage).',
     meRequest: 'Request /v1/account/me',
     meReload: 'Reload',
     meLoading: 'Loading…',
     meEmpty: 'No data yet.',
-    meNoToken: 'No access token in localStorage (sign in via shell /login).',
+    meNoBridge: 'No HostBridge (open this remote inside the shell).',
+    meNoBearer: 'HostBridge auth.http is not in bearer mode.',
+    meNoToken: 'No access token from shell (sign in via /login).',
     meFailed: 'Failed to load /v1/account/me',
   },
   details: {

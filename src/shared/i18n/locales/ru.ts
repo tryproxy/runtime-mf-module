@@ -38,13 +38,14 @@ export const ru = {
     noteI18n: 'Локаль следует за shell через bridge.i18n во встроенном режиме.',
     meTitle: 'Защищённый API: GET /v1/account/me',
     meHint:
-      'AccessTokenGuard. Берёт rmf-access-token из localStorage и шлёт Authorization: Bearer.',
+      'AccessTokenGuard. Токен из bridge.auth.http.getAccessToken() (не localStorage).',
     meRequest: 'Запросить /v1/account/me',
     meReload: 'Обновить',
     meLoading: 'Загрузка…',
     meEmpty: 'Пока нет данных.',
-    meNoToken:
-      'Нет access token в localStorage (войдите через shell /login).',
+    meNoBridge: 'Нет HostBridge (откройте remote внутри shell).',
+    meNoBearer: 'HostBridge auth.http не в режиме bearer.',
+    meNoToken: 'Нет access token от shell (войдите через /login).',
     meFailed: 'Не удалось загрузить /v1/account/me',
   },
   details: {

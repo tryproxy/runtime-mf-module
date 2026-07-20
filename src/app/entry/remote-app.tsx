@@ -1,5 +1,6 @@
 import App from '@/app/app';
 import { useBridgeLocale } from '@/shared/i18n';
+import { HostBridgeProvider } from '@/shared/lib/host-bridge-context';
 import { useBridgeTheme } from '@/shared/lib';
 import type { HostBridge } from '@platform/runtime-mf-contract';
 
@@ -13,5 +14,9 @@ export function RemoteApp({ bridge, basename, mountRoot }: RemoteAppProps) {
   useBridgeLocale(bridge);
   useBridgeTheme(bridge, mountRoot);
 
-  return <App isEmbedded basename={basename} />;
+  return (
+    <HostBridgeProvider value={bridge}>
+      <App isEmbedded basename={basename} />
+    </HostBridgeProvider>
+  );
 }

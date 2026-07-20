@@ -1,3 +1,4 @@
+import { useHostBridge } from '@/shared/lib/host-bridge-context';
 import {
   Button,
   Card,
@@ -24,21 +25,31 @@ const API_BASE =
   import.meta.env.VITE_API_BASE_URL?.replace(/\/+$/, '') ||
   'http://localhost:3000';
 
-/** Same key the shell writes after login/register. */
-const ACCESS_TOKEN_KEY = 'rmf-access-token';
-
-/** Visible on every remote page — protected GET /v1/account/me. */
+/** Visible on every remote page — protected GET via bridge.auth.http. */
 export function ProtectedMeButton() {
   const { t } = useTranslation();
+  const bridge = useHostBridge();
   const [me, setMe] = useState<AccountMe | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
   async function requestProtectedMe() {
-    const token = window.localStorage.getItem(ACCESS_TOKEN_KEY);
     setMe(null);
     setError(null);
 
+    if (!bridge) {
+      setError(t('home.meNoBridge'));
+      return;
+    }
+
+    const { http } = bridge.auth;
+
+    if (http.mode !== 'bearer' || !http.getAccessToken) {
+      setError(t('home.meNoBearer'));
+      return;
+    }
+
+    const token = await http.getAccessToken();
     if (!token) {
       setError(t('home.meNoToken'));
       return;

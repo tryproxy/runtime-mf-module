@@ -5,7 +5,9 @@ import { FormPage } from '@/pages/form';
 import { HomePage } from '@/pages/home';
 import { ModuleNav } from '@/app/ui/module-nav';
 import { ProtectedMeButton } from '@/app/ui/protected-me-button';
+import { HostBridgeProvider } from '@/shared/lib/host-bridge-context';
 import { Toaster, TooltipProvider } from '@/shared/ui/shadcn';
+import { createMockHostBridge } from '@platform/runtime-mf-contract';
 import {
   BrowserRouter,
   HashRouter,
@@ -48,7 +50,6 @@ function AppRoutes({
           <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>
 
-        {/* Sonner portals to body; mounted in remote tree so CSS vars / theme apply. */}
         <Toaster richColors closeButton position="top-right" />
       </section>
     </TooltipProvider>
@@ -66,10 +67,14 @@ function App({ basename = '', isEmbedded = false }: AppProps) {
     );
   }
 
+  const mockBridge = createMockHostBridge({ theme: 'light', locale: 'en' });
+
   return (
-    <HashRouter>
-      <AppRoutes isEmbedded={false} basename={effectiveBasename} />
-    </HashRouter>
+    <HostBridgeProvider value={mockBridge}>
+      <HashRouter>
+        <AppRoutes isEmbedded={false} basename={effectiveBasename} />
+      </HashRouter>
+    </HostBridgeProvider>
   );
 }
 
