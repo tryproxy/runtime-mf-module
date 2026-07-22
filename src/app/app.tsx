@@ -1,13 +1,19 @@
+import {
+  navPagePath,
+  remoteNavManifest,
+  type RemoteNavPageId,
+} from '@/app/model/nav-manifest';
+import { ModuleNav } from '@/app/ui/module-nav';
+import { ProtectedMeButton } from '@/app/ui/protected-me-button';
 import { AboutPage } from '@/pages/about';
 import { CrashPage } from '@/pages/crash';
 import { DetailsPage } from '@/pages/details';
 import { FormPage } from '@/pages/form';
 import { HomePage } from '@/pages/home';
-import { ModuleNav } from '@/app/ui/module-nav';
-import { ProtectedMeButton } from '@/app/ui/protected-me-button';
 import { HostBridgeProvider } from '@/shared/lib/host-bridge-context';
 import { Toaster, TooltipProvider } from '@/shared/ui/shadcn';
 import { createMockHostBridge } from '@platform/runtime-mf-contract';
+import type { ReactElement } from 'react';
 import {
   BrowserRouter,
   HashRouter,
@@ -20,6 +26,25 @@ type AppProps = {
   basename?: string;
   isEmbedded?: boolean;
 };
+
+function pageElement(
+  pageId: RemoteNavPageId,
+  isEmbedded: boolean,
+  basename: string
+): ReactElement {
+  switch (pageId) {
+    case 'overview':
+      return <HomePage isEmbedded={isEmbedded} basename={basename} />;
+    case 'details':
+      return <DetailsPage basename={basename} />;
+    case 'about':
+      return <AboutPage basename={basename} />;
+    case 'form':
+      return <FormPage basename={basename} />;
+    case 'crash':
+      return <CrashPage />;
+  }
+}
 
 function AppRoutes({
   isEmbedded,
@@ -36,17 +61,13 @@ function AppRoutes({
         <ProtectedMeButton />
 
         <Routes>
-          <Route
-            path="/"
-            element={<HomePage isEmbedded={isEmbedded} basename={basename} />}
-          />
-          <Route
-            path="/details"
-            element={<DetailsPage basename={basename} />}
-          />
-          <Route path="/about" element={<AboutPage basename={basename} />} />
-          <Route path="/form" element={<FormPage basename={basename} />} />
-          <Route path="/crash" element={<CrashPage />} />
+          {remoteNavManifest.pages.map((page) => (
+            <Route
+              key={page.id}
+              path={navPagePath(page.segment)}
+              element={pageElement(page.id, isEmbedded, basename)}
+            />
+          ))}
           <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>
 

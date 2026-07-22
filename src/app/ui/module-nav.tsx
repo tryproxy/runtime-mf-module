@@ -1,3 +1,4 @@
+import { navPagePath, remoteNavManifest } from '@/app/model/nav-manifest';
 import {
   APP_LOCALES,
   type AppLocale,
@@ -15,14 +16,6 @@ import {
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-const links = [
-  { to: '/', labelKey: 'nav.overview', end: true },
-  { to: '/details', labelKey: 'nav.details', end: false },
-  { to: '/about', labelKey: 'nav.about', end: false },
-  { to: '/form', labelKey: 'nav.form', end: false },
-  { to: '/crash', labelKey: 'nav.crash', end: false },
-] as const;
-
 type ModuleNavProps = {
   /** Standalone only — when embedded, shell owns the language switch. */
   showLocaleSwitch?: boolean;
@@ -35,23 +28,27 @@ export function ModuleNav({ showLocaleSwitch = false }: ModuleNavProps) {
   return (
     <div className="flex min-w-0 flex-wrap items-center justify-between gap-3">
       <nav className="flex min-w-0 flex-wrap gap-2" aria-label="Module routes">
-        {links.map((link) => (
-          <NavLink
-            key={link.to}
-            to={link.to}
-            end={link.end}
-            className={({ isActive }) =>
-              cn(
-                'rounded-lg px-3 py-2 text-sm font-medium transition-colors',
-                isActive
-                  ? 'bg-secondary text-secondary-foreground'
-                  : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
-              )
-            }
-          >
-            {t(link.labelKey)}
-          </NavLink>
-        ))}
+        {remoteNavManifest.pages.map((page) => {
+          const to = navPagePath(page.segment);
+
+          return (
+            <NavLink
+              key={page.id}
+              to={to}
+              end={page.segment === ''}
+              className={({ isActive }) =>
+                cn(
+                  'rounded-lg px-3 py-2 text-sm font-medium transition-colors',
+                  isActive
+                    ? 'bg-secondary text-secondary-foreground'
+                    : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
+                )
+              }
+            >
+              {page.label[locale]}
+            </NavLink>
+          );
+        })}
       </nav>
 
       {showLocaleSwitch ? (
