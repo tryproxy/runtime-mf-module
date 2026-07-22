@@ -1,7 +1,7 @@
 import { createRoot, type Root } from 'react-dom/client';
 import { RemoteErrorBoundary } from '@/app/ui/remote-error-boundary';
 import '@/shared/i18n';
-import '@/app/index.css';
+import '@/app/styles/index.css';
 import type { MountRemoteApp } from '@platform/runtime-mf-contract';
 import { RemoteApp } from './remote-app';
 
@@ -15,6 +15,7 @@ export const mount: MountRemoteApp = ({ container, bridge, basename }) => {
   );
 
   return {
+    ready: Promise.resolve(),
     unmount() {
       root.unmount();
     },

@@ -13,34 +13,28 @@ import { toast } from 'sonner';
 import { z } from 'zod';
 
 import { cn } from '@/shared/lib';
-import { Button } from '@/shared/ui/shadcn/button';
-import { Calendar } from '@/shared/ui/shadcn/calendar';
-import { Checkbox } from '@/shared/ui/shadcn/checkbox';
 import {
+  Button,
+  Calendar,
+  Checkbox,
   Command,
   CommandEmpty,
   CommandGroup,
   CommandInput,
   CommandItem,
   CommandList,
-} from '@/shared/ui/shadcn/command';
-import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '@/shared/ui/shadcn/dialog';
-import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/shared/ui/shadcn/dropdown-menu';
-import {
   Form,
   FormControl,
   FormDescription,
@@ -48,33 +42,25 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/shared/ui/shadcn/form';
-import { Input } from '@/shared/ui/shadcn/input';
-import {
+  Input,
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/shared/ui/shadcn/popover';
-import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/shared/ui/shadcn/select';
-import {
   Sheet,
   SheetContent,
   SheetDescription,
   SheetHeader,
   SheetTitle,
-} from '@/shared/ui/shadcn/sheet';
-import { Switch } from '@/shared/ui/shadcn/switch';
-import {
+  Switch,
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from '@/shared/ui/shadcn/tooltip';
+} from '@/shared/ui/shadcn';
 
 const TEAMS = ['platform', 'design', 'growth'] as const;
 const FRAMEWORKS = [

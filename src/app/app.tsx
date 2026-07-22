@@ -10,7 +10,7 @@ import { CrashPage } from '@/pages/crash';
 import { DetailsPage } from '@/pages/details';
 import { FormPage } from '@/pages/form';
 import { HomePage } from '@/pages/home';
-import { HostBridgeProvider } from '@/shared/lib/host-bridge-context';
+import { HostBridgeProvider } from '@/shared/lib';
 import { Toaster, TooltipProvider } from '@/shared/ui/shadcn';
 import { createMockHostBridge } from '@platform/runtime-mf-contract';
 import type { ReactElement } from 'react';

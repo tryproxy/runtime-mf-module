@@ -1,7 +1,6 @@
 import App from '@/app/app';
 import { useBridgeLocale } from '@/shared/i18n';
-import { HostBridgeProvider } from '@/shared/lib/host-bridge-context';
-import { useBridgeTheme } from '@/shared/lib';
+import { HostBridgeProvider, useBridgeTheme } from '@/shared/lib';
 import type { HostBridge } from '@platform/runtime-mf-contract';
 
 type RemoteAppProps = {

@@ -1,4 +1,4 @@
-import { useHostBridge } from '@/shared/lib/host-bridge-context';
+import { useHostBridge } from '@/shared/lib';
 import {
   Button,
   Card,
