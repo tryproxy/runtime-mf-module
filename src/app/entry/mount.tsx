@@ -19,7 +19,7 @@ export const mount: MountRemoteApp = ({ container, bridge, basename }) => {
     unmount() {
       root.unmount();
     },
-  };
+  } as ReturnType<MountRemoteApp>;
 };
 
 /** Re-export contract types from the federation entry (shell may import them). */
