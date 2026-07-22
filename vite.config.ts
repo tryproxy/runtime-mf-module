@@ -4,6 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 import viteTsconfigPaths from 'vite-tsconfig-paths';
 import svgr from 'vite-plugin-svgr';
 import federation from '@originjs/vite-plugin-federation';
+import { rmfNavJson } from './vite-plugin-rmf-nav-json';
 import { rmfRemoteCssLayer } from './vite-plugin-rmf-remote-css-layer';
 
 export default defineConfig({
@@ -26,6 +27,7 @@ export default defineConfig({
       },
       shared: ['react', 'react-dom'],
     }),
+    rmfNavJson(),
     rmfRemoteCssLayer(),
   ],
   server: {

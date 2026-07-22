@@ -1,38 +1,37 @@
 import type { Plugin } from 'vite';
 
 const LAYER = 'rmf-remote';
+const SPECIAL_QUERY_RE = /[?&](?:inline|raw|url)\b/;
 
 /**
- * Demote the remote's compiled stylesheet into `@layer rmf-remote` so the
+ * Demote the remote's compiled stylesheets into `@layer rmf-remote` so the
  * shell (which declares `rmf-remote` before its own theme/base/utilities) keeps
  * winning on colliding utilities like `.hidden` vs `.md:flex`.
  *
- * Must run AFTER Tailwind emits CSS — `@import "tailwindcss" layer(...)` fails
- * because Tailwind forbids nesting `@utility`.
+ * Keep this plugin after `tailwindcss()` in Vite config. Both transforms run
+ * with `enforce: 'pre'`, so registration order lets this wrap Tailwind's output
+ * before Vite converts development CSS into a JavaScript style module.
  *
  * Class names stay global so body portals (Select/Dialog/Sonner) still work.
  */
 export function rmfRemoteCssLayer(): Plugin {
   return {
     name: 'rmf-remote-css-layer',
-    apply: 'build',
-    enforce: 'post',
-    generateBundle(_options, bundle) {
-      for (const item of Object.values(bundle)) {
-        if (item.type !== 'asset' || typeof item.source !== 'string') {
-          continue;
-        }
-        if (!item.fileName.endsWith('.css')) {
-          continue;
-        }
-        if (
-          item.source.includes(`@layer ${LAYER}{`) ||
-          item.source.includes(`@layer ${LAYER} {`)
-        ) {
-          continue;
-        }
-        item.source = demoteCssToLayer(item.source, LAYER);
+    enforce: 'pre',
+    transform(css, id) {
+      const path = id.split('?', 1)[0];
+      if (!path.endsWith('.css') || SPECIAL_QUERY_RE.test(id)) {
+        return null;
       }
+
+      if (
+        css.includes(`@layer ${LAYER}{`) ||
+        css.includes(`@layer ${LAYER} {`)
+      ) {
+        return null;
+      }
+
+      return demoteCssToLayer(css, LAYER);
     },
   };
 }

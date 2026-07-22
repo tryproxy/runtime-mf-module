@@ -1,6 +1,6 @@
 import type { NavManifest } from '@platform/runtime-mf-contract';
 
-/** Single source for React remote pages (routes + standalone nav; emit later). */
+/** Single source for React remote pages (routes + standalone nav + nav.json emit). */
 export const remoteNavManifest = {
   contractVersion: 1,
   moduleId: 'remote',

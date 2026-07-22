@@ -12,5 +12,5 @@
       ]
     }
   ],
-  "rewrites": [{ "source": "/((?!assets/).*)", "destination": "/" }]
+  "rewrites": [{ "source": "/((?!assets/|nav\\.json$).*)", "destination": "/" }]
 }

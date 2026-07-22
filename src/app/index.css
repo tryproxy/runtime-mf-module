@@ -1,5 +1,5 @@
 /*
- * Federated CSS is demoted into `@layer rmf-remote` at build time
+ * Federated CSS is demoted into `@layer rmf-remote` in dev and builds
  * (see vite-plugin-rmf-remote-css-layer.ts) so shell utilities win on
  * collisions. Utilities stay unprefixed/global — required for body portals.
  */
