@@ -45,7 +45,6 @@ export default defineConfig({
       },
       dts: false,
       shared: {},
-      disableShared: true,
       bundleAllCSS: true,
       exposes: {
         './mount': './src/app/entry/mount.tsx',
