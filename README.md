@@ -49,6 +49,10 @@ pnpm dev          # http://localhost:5001 — local development
 pnpm build && pnpm preview  # mf-manifest.json + remoteEntry.js + nav.json
 ```
 
+The remote dev server intentionally disables Vite HMR. Exposed modules can be
+loaded by a built or preview shell, where the React Refresh preamble is absent.
+Reload the shell page after changing remote source files.
+
 Shell expects `VITE_REMOTE_MANIFEST_URL=http://localhost:5001/mf-manifest.json`. Nest API ~`:3000` if calling protected endpoints via `bridge.auth.http`.
 
 This is a browser-only producer. Its manifest omits the Module Federation plugin's default SSR entry metadata because this build does not emit an SSR entry.

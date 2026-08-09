@@ -58,6 +58,9 @@ export default defineConfig({
     port: 5001,
     strictPort: true,
     cors: true,
+    // The remote can be loaded by a built shell without Vite's React Refresh
+    // preamble. Avoid host-owned $RefreshSig$/$RefreshReg$ globals in exposes.
+    hmr: false,
   },
   preview: {
     port: 5001,
