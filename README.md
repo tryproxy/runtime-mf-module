@@ -2,7 +2,7 @@
 
 React Module Federation remote (`runtime_mf_module`, shell alias `demo_remote`, port **5001**) for `runtime-mf-shell`. UI and routes live here; chrome and top-level history stay in the shell.
 
-Contract: `@platform/runtime-mf-contract` via `github:tryproxy/runtime-mf-contract`.
+Contract: `@platform/runtime-mf-contract` via `github:tryproxy/runtime-mf-contract#v0.4.0`.
 
 ---
 
