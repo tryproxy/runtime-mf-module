@@ -17,7 +17,7 @@ Contract: `@platform/runtime-mf-contract` via `github:tryproxy/runtime-mf-contra
 
 ## What it must obey
 
-1. Implement `mount({ container, bridge, basename })` → `{ unmount(), ready? }`.
+1. Implement `mount({ container, bridge, basename })` → `{ unmount(), ready }`; readiness resolves from the mounted application's first effect and cleanup is idempotent.
 2. Follow **HostBridge** only — never read tokens from `localStorage`.
 3. Stay under **basename** when embedded; shell owns the browser history.
 4. Keep **`nav-manifest.ts`** the single source for pages (routes + `nav.json`).
