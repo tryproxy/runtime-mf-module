@@ -1,6 +1,6 @@
 # runtime-mf-module
 
-React Module Federation remote (`demo_remote`, port **5001**) for `runtime-mf-shell`. UI and routes live here; chrome and top-level history stay in the shell.
+React Module Federation remote (`runtime_mf_module`, shell alias `demo_remote`, port **5001**) for `runtime-mf-shell`. UI and routes live here; chrome and top-level history stay in the shell.
 
 Contract: `@platform/runtime-mf-contract` via `github:tryproxy/runtime-mf-contract`.
 
@@ -45,7 +45,10 @@ Contract: `@platform/runtime-mf-contract` via `github:tryproxy/runtime-mf-contra
 
 ```bash
 pnpm install
-pnpm dev          # http://localhost:5001 — remoteEntry + nav.json
+pnpm dev          # http://localhost:5001 — local development
+pnpm build && pnpm preview  # mf-manifest.json + remoteEntry.js + nav.json
 ```
 
-Shell expects something like `VITE_REMOTE_ENTRY_URL=http://localhost:5001/assets/remoteEntry.js`. Nest API ~`:3000` if calling protected endpoints via `bridge.auth.http`.
+Shell expects `VITE_REMOTE_MANIFEST_URL=http://localhost:5001/mf-manifest.json`. Nest API ~`:3000` if calling protected endpoints via `bridge.auth.http`.
+
+This is a browser-only producer. Its manifest omits the Module Federation plugin's default SSR entry metadata because this build does not emit an SSR entry.

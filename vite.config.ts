@@ -3,9 +3,27 @@ import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import viteTsconfigPaths from 'vite-tsconfig-paths';
 import svgr from 'vite-plugin-svgr';
-import federation from '@originjs/vite-plugin-federation';
+import { federation } from '@module-federation/vite';
 import { rmfNavJson } from './vite-plugin-rmf-nav-json';
 import { rmfRemoteCssLayer } from './vite-plugin-rmf-remote-css-layer';
+
+// The client-only React build does not emit the plugin's default SSR entry.
+function omitUnavailableSsrEntry(stats: Record<string, unknown>) {
+  const metaData = stats.metaData;
+
+  if (typeof metaData !== 'object' || metaData === null) {
+    return stats;
+  }
+
+  const clientMetaData = Object.fromEntries(
+    Object.entries(metaData).filter(([key]) => key !== 'ssrRemoteEntry')
+  );
+
+  return {
+    ...stats,
+    metaData: clientMetaData,
+  };
+}
 
 export default defineConfig({
   plugins: [
@@ -22,15 +40,22 @@ export default defineConfig({
     federation({
       name: 'runtime_mf_module',
       filename: 'remoteEntry.js',
+      manifest: {
+        additionalData: ({ stats }) => omitUnavailableSsrEntry(stats),
+      },
+      dts: false,
+      shared: {},
+      disableShared: true,
+      bundleAllCSS: true,
       exposes: {
         './mount': './src/app/entry/mount.tsx',
       },
-      shared: ['react', 'react-dom'],
     }),
     rmfNavJson(),
     rmfRemoteCssLayer(),
   ],
   server: {
+    origin: 'http://localhost:5001',
     port: 5001,
     strictPort: true,
     cors: true,
