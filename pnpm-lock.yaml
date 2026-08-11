@@ -13,6 +13,9 @@ importers:
       '@hookform/resolvers':
         specifier: ^5.4.0
         version: 5.4.0(react-hook-form@7.82.0(react@19.1.1))
+      '@platform/runtime-mf-adapters':
+        specifier: file:../runtime-mf-adapters
+        version: file:../runtime-mf-adapters(@platform/runtime-mf-contract@https://codeload.github.com/tryproxy/runtime-mf-contract/tar.gz/a5f5ad49a5c1aca157dea98ec4e04cb16a6c607d)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@platform/runtime-mf-contract':
         specifier: github:tryproxy/runtime-mf-contract#v0.4.0
         version: https://codeload.github.com/tryproxy/runtime-mf-contract/tar.gz/a5f5ad49a5c1aca157dea98ec4e04cb16a6c607d
@@ -1087,6 +1090,24 @@ packages:
         integrity: sha512-QNqXyfVS2wm9hweSYD2O7F0G06uurj9kZ96TRQE5Y9hU7+tgdZwIkbAKc5Ocy1HxEY2kuDQa6cQ1WRs/O5LFKA==,
       }
     engines: { node: ^12.20.0 || ^14.18.0 || >=16.0.0 }
+
+  '@platform/runtime-mf-adapters@file:../runtime-mf-adapters':
+    resolution: { directory: ../runtime-mf-adapters, type: directory }
+    peerDependencies:
+      '@angular/core': ^21.0.0
+      '@angular/platform-browser': ^21.0.0
+      '@platform/runtime-mf-contract': ^0.4.0
+      react: ^18.3.0 || ^19.0.0
+      react-dom: ^18.3.0 || ^19.0.0
+    peerDependenciesMeta:
+      '@angular/core':
+        optional: true
+      '@angular/platform-browser':
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
 
   '@platform/runtime-mf-contract@https://codeload.github.com/tryproxy/runtime-mf-contract/tar.gz/a5f5ad49a5c1aca157dea98ec4e04cb16a6c607d':
     resolution:
@@ -7177,6 +7198,13 @@ snapshots:
       fastq: 1.19.1
 
   '@pkgr/core@0.2.9': {}
+
+  '@platform/runtime-mf-adapters@file:../runtime-mf-adapters(@platform/runtime-mf-contract@https://codeload.github.com/tryproxy/runtime-mf-contract/tar.gz/a5f5ad49a5c1aca157dea98ec4e04cb16a6c607d)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
+    dependencies:
+      '@platform/runtime-mf-contract': https://codeload.github.com/tryproxy/runtime-mf-contract/tar.gz/a5f5ad49a5c1aca157dea98ec4e04cb16a6c607d
+    optionalDependencies:
+      react: 19.1.1
+      react-dom: 19.1.1(react@19.1.1)
 
   '@platform/runtime-mf-contract@https://codeload.github.com/tryproxy/runtime-mf-contract/tar.gz/a5f5ad49a5c1aca157dea98ec4e04cb16a6c607d':
     {}

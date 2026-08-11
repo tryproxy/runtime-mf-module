@@ -47,7 +47,7 @@ export default defineConfig({
       shared: {},
       bundleAllCSS: true,
       exposes: {
-        './mount': './src/app/entry/mount.tsx',
+        './mount': './src/app/entry/index.ts',
       },
     }),
     rmfNavJson(),

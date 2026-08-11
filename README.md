@@ -4,6 +4,8 @@ React Module Federation remote (`runtime_mf_module`, shell alias `demo_remote`, 
 
 Contract: `@platform/runtime-mf-contract` via `github:tryproxy/runtime-mf-contract#v0.4.0`.
 
+React lifecycle: `@platform/runtime-mf-adapters/react`. The current workspace uses a temporary sibling file dependency until the adapters package receives an immutable release tag.
+
 ---
 
 ## What this remote provides
@@ -26,18 +28,19 @@ Contract: `@platform/runtime-mf-contract` via `github:tryproxy/runtime-mf-contra
 
 ## Key files
 
-| Path                                       | Why it matters                                  |
-| ------------------------------------------ | ----------------------------------------------- |
-| `src/app/entry/mount.tsx`                  | Federation mount / unmount seam                 |
-| `src/app/entry/remote-app.tsx`             | Embedded React tree (bridge + basename router)  |
-| `src/app/model/nav-manifest.ts`            | Pages list → routes, standalone nav, `nav.json` |
-| `src/app/main.tsx` / `src/app/app.tsx`     | Standalone boot (no shell)                      |
-| `src/shared/lib/host-bridge-context.tsx`   | Bridge React context                            |
-| `src/shared/lib/use-bridge-theme.ts`       | Theme from bridge                               |
-| `src/shared/i18n/lib/use-bridge-locale.ts` | Locale from bridge                              |
-| `vite.config.ts`                           | Federation name / expose + nav.json plugin      |
-| `vite-plugin-rmf-nav-json.ts`              | Emits `nav.json` at build/dev                   |
-| `vercel.json`                              | Deploy rewrites; keep `/nav.json` reachable     |
+| Path                                       | Why it matters                                   |
+| ------------------------------------------ | ------------------------------------------------ |
+| `src/app/entry/index.ts`                   | Public federation barrel: mount + contract types |
+| `src/app/entry/mount.tsx`                  | Thin product composition over the React adapter  |
+| `src/app/entry/remote-app.tsx`             | Embedded React tree (bridge + basename router)   |
+| `src/app/model/nav-manifest.ts`            | Pages list → routes, standalone nav, `nav.json`  |
+| `src/app/main.tsx` / `src/app/app.tsx`     | Standalone boot (no shell)                       |
+| `src/shared/lib/host-bridge-context.tsx`   | Bridge React context                             |
+| `src/shared/lib/use-bridge-theme.ts`       | Theme from bridge                                |
+| `src/shared/i18n/lib/use-bridge-locale.ts` | Locale from bridge                               |
+| `vite.config.ts`                           | Federation name / expose + nav.json plugin       |
+| `vite-plugin-rmf-nav-json.ts`              | Emits `nav.json` at build/dev                    |
+| `vercel.json`                              | Deploy rewrites; keep `/nav.json` reachable      |
 
 ---
 
