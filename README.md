@@ -4,7 +4,7 @@ React Module Federation remote (`runtime_mf_module`, shell alias `demo_remote`, 
 
 Contract: `@platform/runtime-mf-contract` via `github:tryproxy/runtime-mf-contract#v0.4.0`.
 
-React lifecycle: `@platform/runtime-mf-adapters/react`. The current workspace uses a temporary sibling file dependency until the adapters package receives an immutable release tag.
+React lifecycle: `@platform/runtime-mf-adapters/react` via `github:tryproxy/runtime-mf-adapters#v0.1.0`.
 
 ---
 

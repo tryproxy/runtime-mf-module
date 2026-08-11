@@ -14,8 +14,8 @@ importers:
         specifier: ^5.4.0
         version: 5.4.0(react-hook-form@7.82.0(react@19.1.1))
       '@platform/runtime-mf-adapters':
-        specifier: file:../runtime-mf-adapters
-        version: file:../runtime-mf-adapters(@platform/runtime-mf-contract@https://codeload.github.com/tryproxy/runtime-mf-contract/tar.gz/a5f5ad49a5c1aca157dea98ec4e04cb16a6c607d)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+        specifier: github:tryproxy/runtime-mf-adapters#v0.1.0
+        version: https://codeload.github.com/tryproxy/runtime-mf-adapters/tar.gz/fe2fe05fce730b9cbcc2c3b597aac483b7e0bd94(@platform/runtime-mf-contract@https://codeload.github.com/tryproxy/runtime-mf-contract/tar.gz/a5f5ad49a5c1aca157dea98ec4e04cb16a6c607d)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@platform/runtime-mf-contract':
         specifier: github:tryproxy/runtime-mf-contract#v0.4.0
         version: https://codeload.github.com/tryproxy/runtime-mf-contract/tar.gz/a5f5ad49a5c1aca157dea98ec4e04cb16a6c607d
@@ -1091,8 +1091,12 @@ packages:
       }
     engines: { node: ^12.20.0 || ^14.18.0 || >=16.0.0 }
 
-  '@platform/runtime-mf-adapters@file:../runtime-mf-adapters':
-    resolution: { directory: ../runtime-mf-adapters, type: directory }
+  '@platform/runtime-mf-adapters@https://codeload.github.com/tryproxy/runtime-mf-adapters/tar.gz/fe2fe05fce730b9cbcc2c3b597aac483b7e0bd94':
+    resolution:
+      {
+        tarball: https://codeload.github.com/tryproxy/runtime-mf-adapters/tar.gz/fe2fe05fce730b9cbcc2c3b597aac483b7e0bd94,
+      }
+    version: 0.1.0
     peerDependencies:
       '@angular/core': ^21.0.0
       '@angular/platform-browser': ^21.0.0
@@ -7199,7 +7203,7 @@ snapshots:
 
   '@pkgr/core@0.2.9': {}
 
-  '@platform/runtime-mf-adapters@file:../runtime-mf-adapters(@platform/runtime-mf-contract@https://codeload.github.com/tryproxy/runtime-mf-contract/tar.gz/a5f5ad49a5c1aca157dea98ec4e04cb16a6c607d)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
+  '@platform/runtime-mf-adapters@https://codeload.github.com/tryproxy/runtime-mf-adapters/tar.gz/fe2fe05fce730b9cbcc2c3b597aac483b7e0bd94(@platform/runtime-mf-contract@https://codeload.github.com/tryproxy/runtime-mf-contract/tar.gz/a5f5ad49a5c1aca157dea98ec4e04cb16a6c607d)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
     dependencies:
       '@platform/runtime-mf-contract': https://codeload.github.com/tryproxy/runtime-mf-contract/tar.gz/a5f5ad49a5c1aca157dea98ec4e04cb16a6c607d
     optionalDependencies:
