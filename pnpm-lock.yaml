@@ -15,10 +15,10 @@ importers:
         version: 5.4.0(react-hook-form@7.82.0(react@19.1.1))
       '@platform/runtime-mf-adapters':
         specifier: github:tryproxy/runtime-mf-adapters#v0.1.2
-        version: https://codeload.github.com/tryproxy/runtime-mf-adapters/tar.gz/2d58a51859a97f37423779c35f9801885911e3ba(@platform/runtime-mf-contract@https://codeload.github.com/tryproxy/runtime-mf-contract/tar.gz/c61aea3828ece6c4372ceba7f14101fd0917c038)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+        version: https://codeload.github.com/tryproxy/runtime-mf-adapters/tar.gz/2d58a51859a97f37423779c35f9801885911e3ba(@platform/runtime-mf-contract@https://codeload.github.com/tryproxy/runtime-mf-contract/tar.gz/514a91dce0e75328ce77b9a57470648535af39c6)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@platform/runtime-mf-contract':
-        specifier: github:tryproxy/runtime-mf-contract#v0.5.1
-        version: https://codeload.github.com/tryproxy/runtime-mf-contract/tar.gz/c61aea3828ece6c4372ceba7f14101fd0917c038
+        specifier: github:tryproxy/runtime-mf-contract#v0.5.2
+        version: https://codeload.github.com/tryproxy/runtime-mf-contract/tar.gz/514a91dce0e75328ce77b9a57470648535af39c6
       '@types/node':
         specifier: ^26.1.1
         version: 26.1.1
@@ -1113,12 +1113,12 @@ packages:
       react-dom:
         optional: true
 
-  '@platform/runtime-mf-contract@https://codeload.github.com/tryproxy/runtime-mf-contract/tar.gz/c61aea3828ece6c4372ceba7f14101fd0917c038':
+  '@platform/runtime-mf-contract@https://codeload.github.com/tryproxy/runtime-mf-contract/tar.gz/514a91dce0e75328ce77b9a57470648535af39c6':
     resolution:
       {
-        tarball: https://codeload.github.com/tryproxy/runtime-mf-contract/tar.gz/c61aea3828ece6c4372ceba7f14101fd0917c038,
+        tarball: https://codeload.github.com/tryproxy/runtime-mf-contract/tar.gz/514a91dce0e75328ce77b9a57470648535af39c6,
       }
-    version: 0.5.1
+    version: 0.5.2
 
   '@radix-ui/number@1.1.2':
     resolution:
@@ -7205,14 +7205,14 @@ snapshots:
 
   '@pkgr/core@0.2.9': {}
 
-  '@platform/runtime-mf-adapters@https://codeload.github.com/tryproxy/runtime-mf-adapters/tar.gz/2d58a51859a97f37423779c35f9801885911e3ba(@platform/runtime-mf-contract@https://codeload.github.com/tryproxy/runtime-mf-contract/tar.gz/c61aea3828ece6c4372ceba7f14101fd0917c038)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
+  '@platform/runtime-mf-adapters@https://codeload.github.com/tryproxy/runtime-mf-adapters/tar.gz/2d58a51859a97f37423779c35f9801885911e3ba(@platform/runtime-mf-contract@https://codeload.github.com/tryproxy/runtime-mf-contract/tar.gz/514a91dce0e75328ce77b9a57470648535af39c6)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
     dependencies:
-      '@platform/runtime-mf-contract': https://codeload.github.com/tryproxy/runtime-mf-contract/tar.gz/c61aea3828ece6c4372ceba7f14101fd0917c038
+      '@platform/runtime-mf-contract': https://codeload.github.com/tryproxy/runtime-mf-contract/tar.gz/514a91dce0e75328ce77b9a57470648535af39c6
     optionalDependencies:
       react: 19.1.1
       react-dom: 19.1.1(react@19.1.1)
 
-  '@platform/runtime-mf-contract@https://codeload.github.com/tryproxy/runtime-mf-contract/tar.gz/c61aea3828ece6c4372ceba7f14101fd0917c038':
+  '@platform/runtime-mf-contract@https://codeload.github.com/tryproxy/runtime-mf-contract/tar.gz/514a91dce0e75328ce77b9a57470648535af39c6':
     {}
 
   '@radix-ui/number@1.1.2': {}
