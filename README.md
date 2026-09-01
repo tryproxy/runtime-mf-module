@@ -2,9 +2,9 @@
 
 React Module Federation remote (`runtime_mf_module`, shell alias `demo_remote`, port **5001**) for `runtime-mf-shell`. UI and routes live here; chrome and top-level history stay in the shell.
 
-Contract: `@platform/runtime-mf-contract` via `github:tryproxy/runtime-mf-contract#v0.5.2`.
+Contract: `@platform/runtime-mf-contract` via `github:tryproxy/runtime-mf-contract#v0.5.3`.
 
-React lifecycle: `@platform/runtime-mf-adapters/react` via `github:tryproxy/runtime-mf-adapters#v0.1.2`.
+React lifecycle: `@platform/runtime-mf-adapters/react` via `github:tryproxy/runtime-mf-adapters#v0.1.3`.
 
 ---
 
@@ -46,8 +46,11 @@ React lifecycle: `@platform/runtime-mf-adapters/react` via `github:tryproxy/runt
 
 ## Local run
 
+pnpm 11 (Corepack `packageManager`) and Node 22+. Everyday local install can
+be `pnpm install`. Use `pnpm ci` for a clean lockfile-frozen install.
+
 ```bash
-pnpm install
+pnpm ci
 pnpm dev          # http://localhost:5001 — local development
 pnpm build && pnpm preview  # mf-manifest.json + remoteEntry.js + nav.json
 ```

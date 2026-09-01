@@ -8,27 +8,27 @@ export const remoteNavManifest = {
     {
       id: 'overview',
       segment: '',
-      label: { en: 'Overview', ru: 'Обзор' },
+      label: { en: 'Overview', ru: 'Обзор', es: 'Resumen' },
     },
     {
       id: 'details',
       segment: 'details',
-      label: { en: 'Details', ru: 'Детали' },
+      label: { en: 'Details', ru: 'Детали', es: 'Detalles' },
     },
     {
       id: 'about',
       segment: 'about',
-      label: { en: 'About', ru: 'О модуле' },
+      label: { en: 'About', ru: 'О модуле', es: 'Acerca de' },
     },
     {
       id: 'form',
       segment: 'form',
-      label: { en: 'Form', ru: 'Форма' },
+      label: { en: 'Form', ru: 'Форма', es: 'Formulario' },
     },
     {
       id: 'crash',
       segment: 'crash',
-      label: { en: 'Crash test', ru: 'Тест падения' },
+      label: { en: 'Crash test', ru: 'Тест падения', es: 'Prueba de fallo' },
     },
   ],
 } as const satisfies NavManifest;
