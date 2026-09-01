@@ -1,8 +1,8 @@
 # pnpm 11 project config (this is not a multi-package workspace).
-# Git-hosted contract/adapters run `prepare` to emit dist; pnpm 11 needs the
-# exact git-tarball keys. Update them when the pin SHAs change.
+# Git-hosted contract/adapters run `prepare` to emit dist. Repo URLs
+# (no commit) cover every tag from these repositories.
 allowBuilds:
-  '@platform/runtime-mf-adapters@https://codeload.github.com/tryproxy/runtime-mf-adapters/tar.gz/4662ee2d3e3d1c0428f0448fdd03ecfa4cecca12': true
-  '@platform/runtime-mf-contract@https://codeload.github.com/tryproxy/runtime-mf-contract/tar.gz/c856d8d1b1027ef081cd2c0889fd8935b23f01e5': true
+  '@platform/runtime-mf-adapters@git+https://github.com/tryproxy/runtime-mf-adapters.git': true
+  '@platform/runtime-mf-contract@git+https://github.com/tryproxy/runtime-mf-contract.git': true
   '@tailwindcss/oxide': true
   esbuild: true
