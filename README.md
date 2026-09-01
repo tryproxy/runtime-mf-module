@@ -46,7 +46,7 @@ React lifecycle: `@platform/runtime-mf-adapters/react` via `github:tryproxy/runt
 
 ## Local run
 
-pnpm 11 (Corepack `packageManager`) and Node 22+. Everyday local install can
+pnpm 11 (Corepack `packageManager`) and Node 22.13+. Everyday local install can
 be `pnpm install`. Use `pnpm ci` for a clean lockfile-frozen install.
 
 ```bash
