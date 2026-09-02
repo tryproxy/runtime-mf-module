@@ -14,7 +14,7 @@ export function HomePage({ isEmbedded, basename }: HomePageProps) {
   const activePath = `${location.pathname}${location.search}${location.hash}`;
 
   return (
-    <section className="space-y-6">
+    <section className="flex flex-col gap-6">
       <div>
         <h3 className="text-lg font-semibold tracking-tight">
           {t('home.title')}
@@ -66,7 +66,7 @@ export function HomePage({ isEmbedded, basename }: HomePageProps) {
           <CardTitle>{t('home.notesTitle')}</CardTitle>
         </CardHeader>
         <CardContent>
-          <ul className="text-muted-foreground list-inside list-disc space-y-2 text-sm">
+          <ul className="text-muted-foreground flex list-inside list-disc flex-col gap-2 text-sm">
             <li>{t('home.noteLayout')}</li>
             <li>{t('home.noteMount')}</li>
             <li>{t('home.noteBridge')}</li>

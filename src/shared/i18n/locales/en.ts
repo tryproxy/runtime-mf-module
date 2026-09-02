@@ -1,4 +1,7 @@
 export const en = {
+  toast: {
+    close: 'Close notification',
+  },
   nav: {
     overview: 'Overview',
     details: 'Details',
@@ -111,7 +114,7 @@ export const en = {
     previewSheet: 'Preview in sheet',
     reset: 'Reset',
     toastStack: 'Toast stack',
-    toastStackHint: 'Fires success / error / info / warning via Sonner portal.',
+    toastStackHint: 'Fires four stacked notifications (style-guide toast).',
     actions: 'Actions',
     actionsLabel: 'Toast from menu',
     actionInfo: 'Info toast',

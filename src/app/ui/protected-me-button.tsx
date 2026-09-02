@@ -83,7 +83,7 @@ export function ProtectedMeButton() {
         <CardTitle>{t('home.meTitle')}</CardTitle>
         <CardDescription>{t('home.meHint')}</CardDescription>
       </CardHeader>
-      <CardContent className="space-y-3 text-sm">
+      <CardContent className="flex flex-col gap-3 text-sm">
         <Button
           type="button"
           disabled={loading}

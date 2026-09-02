@@ -9,10 +9,10 @@ import {
 } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { toast } from 'sonner';
 import { z } from 'zod';
 
 import { cn } from '@/shared/lib';
+import { useDemoToast } from '@/shared/ui/demo-toast';
 import {
   Button,
   Calendar,
@@ -97,6 +97,7 @@ type FormPageProps = {
 
 export function FormPage({ basename }: FormPageProps) {
   const { t } = useTranslation();
+  const toast = useDemoToast();
   const schema = useMemo(() => buildSchema(t), [t]);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [sheetOpen, setSheetOpen] = useState(false);
@@ -121,33 +122,35 @@ export function FormPage({ basename }: FormPageProps) {
   const onValid = (values: FormValues) => {
     setPendingPayload(values);
     setDialogOpen(true);
-    toast.success(t('form.toastSubmitReady'), {
-      description: t('form.toastSubmitReadyDesc'),
-    });
+    toast.show(
+      `${t('form.toastSubmitReady')}. ${t('form.toastSubmitReadyDesc')}`
+    );
   };
 
   const onInvalid = () => {
-    toast.error(t('form.toastValidation'), {
-      description: t('form.toastValidationDesc'),
-    });
+    toast.show(
+      `${t('form.toastValidation')}. ${t('form.toastValidationDesc')}`
+    );
   };
 
   const confirmSubmit = () => {
     setDialogOpen(false);
-    toast.success(t('form.toastSuccess'), {
-      description: pendingPayload?.title,
-    });
+    toast.show(
+      pendingPayload?.title
+        ? `${t('form.toastSuccess')}. ${pendingPayload.title}`
+        : t('form.toastSuccess')
+    );
   };
 
   const fireToastStack = () => {
-    toast.success(t('form.toastVariantSuccess'));
-    toast.error(t('form.toastVariantError'));
-    toast.info(t('form.toastVariantInfo'));
-    toast.warning(t('form.toastVariantWarning'));
+    toast.show(t('form.toastVariantSuccess'));
+    toast.show(t('form.toastVariantError'));
+    toast.show(t('form.toastVariantInfo'));
+    toast.show(t('form.toastVariantWarning'));
   };
 
   return (
-    <section className="space-y-6">
+    <section className="flex flex-col gap-6">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
           <h3 className="text-lg font-semibold tracking-tight">
@@ -185,17 +188,17 @@ export function FormPage({ basename }: FormPageProps) {
               <DropdownMenuLabel>{t('form.actionsLabel')}</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem
-                onSelect={() => toast.info(t('form.toastMenuInfo'))}
+                onSelect={() => toast.show(t('form.toastMenuInfo'))}
               >
                 {t('form.actionInfo')}
               </DropdownMenuItem>
               <DropdownMenuItem
-                onSelect={() => toast.success(t('form.toastMenuSuccess'))}
+                onSelect={() => toast.show(t('form.toastMenuSuccess'))}
               >
                 {t('form.actionSuccess')}
               </DropdownMenuItem>
               <DropdownMenuItem
-                onSelect={() => toast.error(t('form.toastMenuError'))}
+                onSelect={() => toast.show(t('form.toastMenuError'))}
               >
                 {t('form.actionError')}
               </DropdownMenuItem>
@@ -206,9 +209,9 @@ export function FormPage({ basename }: FormPageProps) {
 
       <Form {...form}>
         <form
-          onSubmit={form.handleSubmit(onValid, onInvalid)}
-          className="bg-card ring-foreground/10 wideMobile:p-6 space-y-6 rounded-xl p-4 ring-1"
           noValidate
+          className="bg-card ring-foreground/10 wideMobile:p-6 flex flex-col gap-6 rounded-xl p-4 ring-1"
+          onSubmit={form.handleSubmit(onValid, onInvalid)}
         >
           <div className="wideMobile:grid-cols-2 grid gap-6">
             <FormField
@@ -236,7 +239,7 @@ export function FormPage({ basename }: FormPageProps) {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>{t('form.fieldTeam')}</FormLabel>
-                  <Select onValueChange={field.onChange} value={field.value}>
+                  <Select value={field.value} onValueChange={field.onChange}>
                     <FormControl>
                       <SelectTrigger className="w-full">
                         <SelectValue
@@ -357,10 +360,10 @@ export function FormPage({ basename }: FormPageProps) {
                       align="start"
                     >
                       <Calendar
+                        autoFocus
                         mode="single"
                         selected={field.value}
                         onSelect={field.onChange}
-                        autoFocus
                       />
                     </PopoverContent>
                   </Popover>
@@ -398,7 +401,7 @@ export function FormPage({ basename }: FormPageProps) {
                       }
                     />
                   </FormControl>
-                  <div className="space-y-1 leading-none">
+                  <div className="flex flex-col gap-1 leading-none">
                     <FormLabel>{t('form.fieldTerms')}</FormLabel>
                     <FormDescription>
                       {t('form.fieldTermsHint')}
@@ -424,7 +427,7 @@ export function FormPage({ basename }: FormPageProps) {
               variant="ghost"
               onClick={() => {
                 form.reset();
-                toast.info(t('form.toastReset'));
+                toast.show(t('form.toastReset'));
               }}
             >
               {t('form.reset')}
@@ -474,7 +477,7 @@ export function FormPage({ basename }: FormPageProps) {
             <SheetTitle>{t('form.sheetTitle')}</SheetTitle>
             <SheetDescription>{t('form.sheetDescription')}</SheetDescription>
           </SheetHeader>
-          <div className="space-y-3 px-4 pb-4 text-sm">
+          <div className="flex flex-col gap-3 px-4 pb-4 text-sm">
             <PreviewRow label={t('form.fieldTitle')} value={watched.title} />
             <PreviewRow
               label={t('form.fieldTeam')}

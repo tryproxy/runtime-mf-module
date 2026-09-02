@@ -12,7 +12,7 @@ export function DetailsPage({ basename }: DetailsPageProps) {
   const activePath = `${location.pathname}${location.search}${location.hash}`;
 
   return (
-    <section className="space-y-6">
+    <section className="flex flex-col gap-6">
       <div>
         <h3 className="text-lg font-semibold tracking-tight">
           {t('details.title')}

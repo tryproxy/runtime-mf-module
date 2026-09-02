@@ -18,7 +18,7 @@ export function CrashPage() {
   }
 
   return (
-    <section className="space-y-6">
+    <section className="flex flex-col gap-6">
       <div>
         <h3 className="text-lg font-semibold tracking-tight">
           {t('crash.title')}

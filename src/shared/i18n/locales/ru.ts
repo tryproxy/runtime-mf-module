@@ -1,4 +1,7 @@
 export const ru = {
+  toast: {
+    close: 'Закрыть уведомление',
+  },
   nav: {
     overview: 'Обзор',
     details: 'Детали',
@@ -112,7 +115,7 @@ export const ru = {
     previewSheet: 'Превью в sheet',
     reset: 'Сбросить',
     toastStack: 'Стек toast',
-    toastStackHint: 'Success / error / info / warning через портал Sonner.',
+    toastStackHint: 'Четыре уведомления подряд (тост как в Style Guide).',
     actions: 'Действия',
     actionsLabel: 'Toast из меню',
     actionInfo: 'Info toast',

@@ -11,7 +11,8 @@ import { DetailsPage } from '@/pages/details';
 import { FormPage } from '@/pages/form';
 import { HomePage } from '@/pages/home';
 import { HostBridgeProvider } from '@/shared/lib';
-import { Toaster, TooltipProvider } from '@/shared/ui/shadcn';
+import { DemoToastProvider } from '@/shared/ui/demo-toast';
+import { TooltipProvider } from '@/shared/ui/shadcn';
 import { createMockHostBridge } from '@platform/runtime-mf-contract';
 import type { ReactElement } from 'react';
 import {
@@ -55,24 +56,24 @@ function AppRoutes({
 }) {
   return (
     <TooltipProvider>
-      <section className="min-w-0 space-y-6 overflow-x-auto p-px">
-        {!isEmbedded ? <ModuleNav showLocaleSwitch /> : null}
+      <DemoToastProvider>
+        <section className="flex min-w-0 flex-col gap-6 overflow-x-auto p-px">
+          {!isEmbedded ? <ModuleNav showLocaleSwitch /> : null}
 
-        <ProtectedMeButton />
+          <ProtectedMeButton />
 
-        <Routes>
-          {remoteNavManifest.pages.map((page) => (
-            <Route
-              key={page.id}
-              path={navPagePath(page.segment)}
-              element={pageElement(page.id, isEmbedded, basename)}
-            />
-          ))}
-          <Route path="*" element={<Navigate replace to="/" />} />
-        </Routes>
-
-        <Toaster richColors closeButton position="top-right" />
-      </section>
+          <Routes>
+            {remoteNavManifest.pages.map((page) => (
+              <Route
+                key={page.id}
+                path={navPagePath(page.segment)}
+                element={pageElement(page.id, isEmbedded, basename)}
+              />
+            ))}
+            <Route path="*" element={<Navigate replace to="/" />} />
+          </Routes>
+        </section>
+      </DemoToastProvider>
     </TooltipProvider>
   );
 }
